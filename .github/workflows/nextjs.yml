@@ -48,6 +48,9 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+      - name: Install dependencies
+        run: |
+         ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }} --force --include=dev
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
